@@ -112,5 +112,4 @@ func timeout_function():
 
 
 func _on_button_pressed() -> void:
-	CobbleMap.gen(1)
 	pass # Replace with function body.
