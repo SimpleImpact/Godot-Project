@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c0wsv0wn7obag"]
+[gd_scene load_steps=34 format=3 uid="uid://c0wsv0wn7obag"]
 
 [ext_resource type="Texture2D" uid="uid://bifcuycrhu4v2" path="res://Sprites/rogueFlipped.png" id="1_dgash"]
 [ext_resource type="Texture2D" uid="uid://bwwvuafk8l37c" path="res://Sprites/rogue.png" id="1_o3uii"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://wocwbukm0scn" path="res://Sprites/Touchscreen Inputs/1731604114024.png" id="6_d4b3v"]
 [ext_resource type="Script" path="res://button.gd" id="6_xihq0"]
 [ext_resource type="Script" path="res://Scripts/Attack Handler.gd" id="7_8eboh"]
-[ext_resource type="Texture2D" uid="uid://dpgaekdsef2tp" path="res://Sprites/Background/black.png" id="9_bskb1"]
+[ext_resource type="Texture2D" uid="uid://dbcijsgl5r1rg" path="res://icon.svg" id="9_52wo7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ph2tk"]
 atlas = ExtResource("1_o3uii")
@@ -125,12 +125,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_hvss0"]
+[sub_resource type="Gradient" id="Gradient_caghv"]
 offsets = PackedFloat32Array(0, 0.714286)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ryw10"]
-gradient = SubResource("Gradient_hvss0")
+gradient = SubResource("Gradient_caghv")
 width = 1024
 height = 1024
 fill = 1
@@ -144,6 +144,13 @@ margin = Rect2(0, 0, -1, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfyvs"]
 
+[sub_resource type="Gradient" id="Gradient_omw7s"]
+offsets = PackedFloat32Array(0.512987)
+colors = PackedColorArray(0.548963, 0.548963, 0.548963, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ymckn"]
+gradient = SubResource("Gradient_omw7s")
+
 [sub_resource type="Gradient" id="Gradient_1poxb"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
@@ -153,12 +160,16 @@ gradient = SubResource("Gradient_1poxb")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_slspo"]
 polygon = PackedVector2Array(320, 192, 192, 192, 192, 320, 320, 320)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_a6bk3"]
+specular_texture = ExtResource("9_52wo7")
+
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
 script = ExtResource("5_abbcs")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 texture_filter = 1
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_rjv25")
 maxSpeed = 1250
 accel = 0.25
@@ -197,10 +208,9 @@ script = ExtResource("6_xihq0")
 
 [node name="Lamp" type="PointLight2D" parent="Player"]
 scale = Vector2(4, 4)
-color = Color(0.998142, 0.461959, 0.309468, 1)
+energy = 2.68
 range_z_max = 0
 shadow_enabled = true
-shadow_color = Color(0.156863, 0.156863, 0.156863, 0.192157)
 texture = SubResource("GradientTexture2D_ryw10")
 
 [node name="Touchscreen Inputs" type="Node" parent="."]
@@ -252,9 +262,8 @@ visibility_mode = 1
 
 [node name="Black" type="Sprite2D" parent="Background"]
 z_index = -2
-position = Vector2(0.000976563, -0.000976563)
-scale = Vector2(78.2851, 78.2851)
-texture = ExtResource("9_bskb1")
+scale = Vector2(500, 500)
+texture = SubResource("GradientTexture2D_ymckn")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
@@ -267,8 +276,14 @@ texture = SubResource("GradientTexture2D_a4loa")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 modulate = Color(0.72488, 0.366114, 0.0565026, 1)
+position = Vector2(-983, 170)
 occluder = SubResource("OccluderPolygon2D_slspo")
 sdf_collision = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-535, -222)
+scale = Vector2(377, 100.5)
+texture = SubResource("CanvasTexture_a6bk3")
 
 [connection signal="pressed" from="Player/MarginContainer/Button" to="Player" method="_on_button_pressed"]
 [connection signal="pressed" from="Player/MarginContainer/Button" to="Player/MarginContainer/Button" method="_on_pressed"]
