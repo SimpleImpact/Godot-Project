@@ -14,7 +14,6 @@ var openTiles = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	DungeonGen.generate(self, mapWidth, mapHeight, minRoomSize, maxRoomSize)
-	print(mapHeight * mapWidth)
 	for i in mapWidth * mapHeight:
 		if width >= 50:
 			height += 2
@@ -23,11 +22,3 @@ func _ready() -> void:
 		if (get_cell_source_id(0, Vector2i(width, height)) == -1):
 			openTiles.append(Vector2i(width, height))
 		width += 1
-	print(openTiles)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("Reload"):
-		gen()
-
-func gen():
-	DungeonGen.generate(self, mapWidth, mapHeight, minRoomSize, maxRoomSize)
