@@ -79,9 +79,6 @@ z_index = -2
 scale = Vector2(500, 500)
 texture = SubResource("GradientTexture2D_ymckn")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-blend_mode = 1
-
 [node name="Layer 1 Light" type="PointLight2D" parent="."]
 scale = Vector2(700, 700)
 range_z_min = 1

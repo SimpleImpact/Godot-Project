@@ -20,6 +20,7 @@ func _ready():
 
 func generate(map:TileMap, w:int, h:int, minRoomSize, maxRoomSize):
 	print("Map Generated")
+	
 	var potentialRooms:int = (w / maxRoomSize) * (h / maxRoomSize)
 	var rooms:Dictionary
 	var room:Room

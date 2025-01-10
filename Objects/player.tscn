@@ -180,4 +180,8 @@ range_z_max = 0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_kv3fc")
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+blend_mode = 1
+range_z_max = 0
+
 [connection signal="pressed" from="MarginContainer/Button" to="MarginContainer/Button" method="_on_pressed"]

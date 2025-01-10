@@ -59,8 +59,10 @@ func _process(_delta: float) -> void:
 		if collider.is_disabled():
 			collider.disabled = false
 			$Lamp.enabled = true
+			$DirectionalLight2D.enabled = true
 		else:
 			collider.disabled = true
+			$DirectionalLight2D.enabled = false
 			$Lamp.enabled = false
 
 #Func for input directions
